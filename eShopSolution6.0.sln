@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.WebApp", "eShop.WebApp\eShop.WebApp.csproj", "{944144D4-9B62-44C4-B5FA-52BB0DA3A814}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Database", "eShop.Database\eShop.Database.csproj", "{0CA3CEAD-DB6A-413A-81BB-A7DFF3740E22}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{944144D4-9B62-44C4-B5FA-52BB0DA3A814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{944144D4-9B62-44C4-B5FA-52BB0DA3A814}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{944144D4-9B62-44C4-B5FA-52BB0DA3A814}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{944144D4-9B62-44C4-B5FA-52BB0DA3A814}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CA3CEAD-DB6A-413A-81BB-A7DFF3740E22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CA3CEAD-DB6A-413A-81BB-A7DFF3740E22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CA3CEAD-DB6A-413A-81BB-A7DFF3740E22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CA3CEAD-DB6A-413A-81BB-A7DFF3740E22}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

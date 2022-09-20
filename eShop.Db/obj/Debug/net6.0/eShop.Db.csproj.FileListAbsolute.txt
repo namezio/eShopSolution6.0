@@ -1,0 +1,14 @@
+/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.Db/bin/Debug/net6.0/eShop.Db.deps.json
+/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.Db/bin/Debug/net6.0/eShop.Db.runtimeconfig.json
+/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.Db/bin/Debug/net6.0/eShop.Db.dll
+/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.Db/bin/Debug/net6.0/eShop.Db.pdb
+/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.Db/obj/Debug/net6.0/eShop.Db.csproj.AssemblyReference.cache
+/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.Db/obj/Debug/net6.0/eShop.Db.GeneratedMSBuildEditorConfig.editorconfig
+/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.Db/obj/Debug/net6.0/eShop.Db.AssemblyInfoInputs.cache
+/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.Db/obj/Debug/net6.0/eShop.Db.AssemblyInfo.cs
+/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.Db/obj/Debug/net6.0/eShop.Db.csproj.CoreCompileInputs.cache
+/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.Db/obj/Debug/net6.0/eShop.Db.dll
+/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.Db/obj/Debug/net6.0/refint/eShop.Db.dll
+/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.Db/obj/Debug/net6.0/eShop.Db.pdb
+/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.Db/obj/Debug/net6.0/eShop.Db.genruntimeconfig.cache
+/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.Db/obj/Debug/net6.0/ref/eShop.Db.dll
