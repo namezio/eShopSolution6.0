@@ -9,6 +9,7 @@
     <ItemGroup>
       <PackageReference Include="EntityFramework" Version="6.4.4" />
       <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.9" />
+      <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.9" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.9">
         <PrivateAssets>all</PrivateAssets>
@@ -29,11 +30,40 @@
     </ItemGroup>
 
     <ItemGroup>
+      <None Include="wwwroot\css\bootstrap.css" />
+      <None Include="wwwroot\css\font-awesome.min.css" />
+      <None Include="wwwroot\css\responsive.css" />
       <None Include="wwwroot\css\style.css" />
+      <None Include="wwwroot\css\style.css.map" />
+      <None Include="wwwroot\css\style.scss" />
+      <None Include="wwwroot\fonts\fontawesome-webfont.ttf" />
+      <None Include="wwwroot\fonts\fontawesome-webfont.woff" />
+      <None Include="wwwroot\fonts\fontawesome-webfont.woff2" />
+      <None Include="wwwroot\images\arrival-bg.jpg" />
+      <None Include="wwwroot\images\arrival-bg.png" />
+      <None Include="wwwroot\images\client.jpg" />
+      <None Include="wwwroot\images\favicon.png" />
+      <None Include="wwwroot\images\logo.png" />
+      <None Include="wwwroot\images\p1.png" />
+      <None Include="wwwroot\images\p10.png" />
+      <None Include="wwwroot\images\p11.png" />
+      <None Include="wwwroot\images\p12.png" />
+      <None Include="wwwroot\images\p2.png" />
+      <None Include="wwwroot\images\p3.png" />
+      <None Include="wwwroot\images\p4.png" />
+      <None Include="wwwroot\images\p5.png" />
+      <None Include="wwwroot\images\p6.png" />
+      <None Include="wwwroot\images\p7.png" />
+      <None Include="wwwroot\images\p8.png" />
+      <None Include="wwwroot\images\p9.png" />
+      <None Include="wwwroot\images\slider-bg.jpg" />
+      <None Include="wwwroot\js\bootstrap.js" />
+      <None Include="wwwroot\js\custom.js" />
+      <None Include="wwwroot\js\jquery-3.4.1.min.js" />
+      <None Include="wwwroot\js\popper.min.js" />
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="famm\.DS_Store" />
       <Content Include="Views\Home\.DS_Store" />
     </ItemGroup>
 
