@@ -1,0 +1,34 @@
+@model eShop.WebApp.Models.IndexModel;
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+<a href="@Url.Action("CreateCategory", "Home")">
+          Add Category
+          </a>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Category Name</th>
+      <th scope="col">#</th>
+    </tr>
+  </thead>
+  <tbody>
+  @foreach (var x in Model.Categories)
+  {
+    <tr>
+      <th scope="row">@x.CategoryId</th>
+      <td>@x.CategoryName</td>
+      <td>
+        <a onclick="if (confirm('You really wait remove this product ?')==true) {location.href='@Url.Action("DeleteCategory", "Home", new { id = @x.CategoryId })'}" target="_blank" class="option2">
+          Detele
+        </a>
+        <a href="@Url.Action("UpdateCategory", "Home", new {id = @x.CategoryId})" target="_blank">
+          Update
+          </a>
+      </td>
+    </tr>
+  }
+  </tbody>
+</table>

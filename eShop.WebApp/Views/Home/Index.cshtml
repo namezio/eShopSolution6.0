@@ -378,6 +378,7 @@
                   Our <span>products</span>
                </h2>
             </div>
+            <a href="@Url.Action("CreateProduct","Home")">Add Product</a>
             <div class="row">
             @foreach (var item in Model.Products)
             {
@@ -388,7 +389,7 @@
                            <a href="" class="option1" data>
                               Add To Cart
                            </a>
-                           <a href="" class="option2">
+                           <a href="@Url.Action("DetailProduct","Home",new {id = @item.ProductId})" target="_blank" class="option2">
                               Buy Now
                            </a>
                         </div>
@@ -409,7 +410,7 @@
             }
             </div>
             <div class="btn-box">
-               <a href="">
+               <a href="@Url.Action("Product","Home")">
                View All products
                </a>
             </div>

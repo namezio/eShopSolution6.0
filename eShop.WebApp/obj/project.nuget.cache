@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "n3REzKGjVChQwJzIGNp/TVEYLQn6U66XpD9bR4ANiZDYGzJBAihg/ErAgLoykey/QG6yPKM3HVrdI82giYpGHg==",
+  "dgSpecHash": "zN6iJ64JfePeXv/bEP+t4F1IIsUKaE9wIWiMkl56b2Dw/kdrAKYiDJhfvqvqBbDXbObXXMF0MwFnt0AznHVzMg==",
   "success": true,
   "projectFilePath": "/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/eShop.WebApp.csproj",
   "expectedPackageFiles": [
@@ -56,6 +56,7 @@
     "/Users/macbook/.nuget/packages/mysql.entityframeworkcore/6.0.4/mysql.entityframeworkcore.6.0.4.nupkg.sha512",
     "/Users/macbook/.nuget/packages/mysqlconnector/2.1.2/mysqlconnector.2.1.2.nupkg.sha512",
     "/Users/macbook/.nuget/packages/netstandard.library/1.6.1/netstandard.library.1.6.1.nupkg.sha512",
+    "/Users/macbook/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512",
     "/Users/macbook/.nuget/packages/pomelo.entityframeworkcore.mysql/6.0.2/pomelo.entityframeworkcore.mysql.6.0.2.nupkg.sha512",
     "/Users/macbook/.nuget/packages/portable.bouncycastle/1.9.0/portable.bouncycastle.1.9.0.nupkg.sha512",
     "/Users/macbook/.nuget/packages/runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl/4.3.0/runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",

@@ -82,3 +82,4 @@
 /Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll
 /Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/eShop.Database.dll
 /Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/eShop.Database.pdb
+/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/Newtonsoft.Json.dll
