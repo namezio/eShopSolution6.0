@@ -11,4 +11,6 @@ public class ProductModel
     public string ProductImage { get; set; }
     public int ProductCategoryId { get; set; }
     
+    public ProductCategory Category { get; set; }
+    
 }

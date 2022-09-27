@@ -53,11 +53,7 @@ public class HomeController : Controller
         model.Products = products;
         return View(model);
     }
-    // [HttpPost]
-    // public ActionResult Index(int productId)
-    // {
-    //     return View();
-    // }
+    
     public ActionResult OrderDetail()
     {
         return View(GetCartItems());
@@ -69,12 +65,12 @@ public class HomeController : Controller
             .FirstOrDefault();
         if (product == null)
             return NotFound ("Không có sản phẩm");
-
         // Xử lý đưa vào Cart ...
         var cart = GetCartItems ();
         var cartitem = cart.Find (p => p.Product.ProductId == id);
         if (cartitem != null) {
             // Đã tồn tại, tăng thêm 1
+            
             cartitem.Quantity++;
         } else {
             //  Thêm mới
@@ -88,28 +84,45 @@ public class HomeController : Controller
     }
     
     [HttpPost]
-    public IActionResult UpdateCart ([FromForm] int id, [FromForm] int quantity) {
+    public IActionResult UpdateCart ( int productid, int quantity) {
         // Cập nhật Cart thay đổi số lượng quantity ...
         var cart = GetCartItems ();
-        var cartitem = cart.Find (p => p.Product.ProductId == id);
+        var cartitem = cart.Find (p => p.Product.ProductId == productid);
         if (cartitem != null) {
             // Đã tồn tại, tăng thêm 1
             cartitem.Quantity = quantity;
+            if (quantity == 0)
+            {
+                cart.Remove(cartitem);
+            }
+
+            if (quantity < 0)
+            {
+                return Json(new { error = true, message = "Quantily must >0" });
+            }
         }
         SaveCartSession (cart);
-        // Trả về mã thành công (không có nội dung gì - chỉ để Ajax gọi)
-        return Ok();
+        return Json(new {error = false, message = ""});
     }
     
-    public IActionResult RemoveCart (int id) {
-        var cart = GetCartItems ();
-        var cartitem = cart.Find (p => p.Product.ProductId == id);
-        if (cartitem != null) {
-            // Đã tồn tại, tăng thêm 1
-            cart.Remove(cartitem);
+    
+    public ActionResult RemoveCart (int productid) {
+        try
+        {
+            var cart = GetCartItems ();
+            var cartitem = cart.Find (p => p.Product.ProductId == productid);
+            if (cartitem != null) {
+                // Đã tồn tại, tăng thêm 1
+                cart.Remove(cartitem);
+                SaveCartSession(cart);
+            }
         }
-        SaveCartSession (cart);
-        return RedirectToAction ("OrderDetail","Home");
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+        return Json(new {error = false, message = ""});
     }
     public IActionResult Product()
     {

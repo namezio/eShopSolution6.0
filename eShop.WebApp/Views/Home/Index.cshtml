@@ -386,9 +386,9 @@
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
-                           <a href="" class="option1" data>
-                              Add To Cart
-                           </a>
+                           <a href="@Url.Action("AddToCart","Home",new {id = @item.ProductId})" class="option1" data>
+                                                                        Add To Cart
+                                                                     </a>
                            <a href="@Url.Action("DetailProduct","Home",new {id = @item.ProductId})" target="_blank" class="option2">
                               Buy Now
                            </a>
@@ -402,7 +402,7 @@
                            @item.ProductName
                         </h5>
                         <h6>
-                           @item.ProductPrice VND
+                           @item.ProductPrice.ToString("n0") VND
                         </h6>
                      </div>
                   </div>

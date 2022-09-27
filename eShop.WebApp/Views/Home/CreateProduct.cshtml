@@ -30,11 +30,7 @@
         </div> 
     <div class="form-group">
         <label asp-for="@Model.ProductCategoryId">Category</label>
-        @* <select asp-for="@Model.ProductCategoryId"  *@
-        @*                 asp-items="@(new SelectList(@Model.Category, nameof(CategoryModel.CategoryId), nameof(CategoryModel.CategoryName)))"> *@
-        @*             <option>Please select one</option> *@
-        @*         </select> *@
-        @* <span asp-validation-for="@Model.ProductCategoryId" class="text-danger"></span> *@
+        <span asp-validation-for="@Model.ProductCategoryId" class="text-danger"></span>
         <input class="form-control" asp-for="@Model.ProductCategoryId" />
         </div> 
     <div class="form-group">
