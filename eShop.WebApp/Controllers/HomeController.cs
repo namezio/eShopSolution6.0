@@ -95,11 +95,18 @@ public class HomeController : Controller
             {
                 cart.Remove(cartitem);
             }
-
-            if (quantity < 0)
+            else if (quantity < 0)
             {
-                return Json(new { error = true, message = "Quantily must >0" });
+                return Json(new { error = true, message = "Quantity must >0" });
             }
+            else if (quantity>100)
+            {
+                return Json(new { error = true, message = "Quantity must <100" });
+            }
+            // else
+            // {
+            //     return Json(new { error = true, message = "Your input is uncorrect !" });
+            // }
         }
         SaveCartSession (cart);
         return Json(new {error = false, message = ""});
@@ -139,6 +146,11 @@ public class HomeController : Controller
     [HttpPost]
     public ActionResult CreateProduct(ProductModel model)
     {
+        var category = eShop.ProductCategories
+            .Where (p => p.CategoryId == model.ProductCategoryId)
+            .FirstOrDefault();
+        if (category == null)
+            return Json(new { error = true, message = "Your Category not found" });
         try
         {
             var products = new Product()
@@ -175,6 +187,11 @@ public class HomeController : Controller
     [HttpPost]
     public ActionResult UpdateProduct(ProductModel model)
     {
+        var category = eShop.ProductCategories
+            .Where (p => p.CategoryId == model.ProductCategoryId)
+            .FirstOrDefault();
+        if (category == null)
+            return Json(new { error = true, message = "Your Category not found" });
         try
         {
             var products = eShop.Products.Find(model.ProductId);
@@ -267,7 +284,7 @@ public class HomeController : Controller
             return RedirectToAction("Category", "Home");
         
     }
-    [HttpGet]
+    
     [HttpGet]
     public ActionResult UpdateCategory(int id)
     {

@@ -12,22 +12,22 @@
     </div>
     <div class="form-group">
         <label asp-for="@Model.ProductName">Product Name</label>
-        <input class="form-control" asp-for="@Model.ProductName"/>
+        <input class="form-control" asp-for="@Model.ProductName" required/>
         @* <span asp-validation-for="@Model.ProductName" class="text-danger"></span>   *@
     </div>
     <div class="form-group">
         <label asp-for="@Model.ProductPrice">Price</label>
-        <input class="form-control" asp-for="@Model.ProductPrice" />
+        <input class="form-control" asp-for="@Model.ProductPrice" required/>
         @* <span asp-validation-for="@Model.ProductPrice" class="text-danger"></span> *@
     </div>
     <div class="form-group">
         <label asp-for="@Model.ProductLongDesc">Description</label>
-        <input class="form-control" asp-for="@Model.ProductLongDesc" />
+        <input class="form-control" asp-for="@Model.ProductLongDesc" required/>
         @* <span asp-validation-for="@Model.ProductLongDesc" class="text-danger"></span> *@
     </div> 
     <div class="form-group">
             <label asp-for="@Model.ProductImage">Image</label>
-            <input class="form-control" asp-for="@Model.ProductImage" />
+            <input class="form-control" asp-for="@Model.ProductImage" required/>
             @* <span asp-validation-for="@Model.ProductLongDesc" class="text-danger"></span> *@
         </div> 
     <div class="form-group">

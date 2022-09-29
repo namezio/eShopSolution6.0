@@ -8,7 +8,7 @@
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group">
         <label asp-for="@Model.CategoryName">Product Name</label>
-        <input class="form-control" asp-for="@Model.CategoryName" />
+        <input class="form-control" asp-for="@Model.CategoryName" required/>
         @* <span asp-validation-for="@Model.ProductName" class="text-danger"></span>   *@
     </div>
     <div class="form-group">

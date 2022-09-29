@@ -17,19 +17,19 @@
     {
         var thanhtien = cartitem.Quantity * cartitem.Product.ProductPrice;
         total += (decimal)thanhtien;
-
+        
         <tr>
-           <td>@(stt++)</td>
-           <td>@cartitem.Product.ProductName</td>
-           <td>@(cartitem.Product.ProductPrice.ToString("n0"))</td>
-           <td><input asp-for="@cartitem.Quantity" id="@($"quantity-{cartitem.Product.ProductId}")"/></td>
-           <td>@(thanhtien.ToString("n0"))</td>
-           <td>
-              <button class="btn btn-success updatecartitem"data-productid="@cartitem.Product.ProductId">Update</button>
-              <button class="btn btn-danger remove" data-productid="@cartitem.Product.ProductId">Xóa</button>
-              @* <a href="@Url.Action("UpdateCart","Home",new {productid = @cartitem.Product.ProductId, quantity = @cartitem.Quantity})" class="btn btn-success">Update</a> *@
-              @* <a class="btn btn-danger" href="@Url.Action("RemoveCart","Home",new {productid =@cartitem.Product.ProductId})">Remove</a> *@
-           </td>
+            <input type="hidden" asp-for="@cartitem.Product.ProductId" id="idProduct"/>
+            <td>@(stt++)</td>
+            <td>@cartitem.Product.ProductName</td>
+            <td>@(cartitem.Product.ProductPrice.ToString("n0"))</td>
+            <td><input type="number" asp-for="@cartitem.Quantity" id="@($"quantity-{cartitem.Product.ProductId}")" data-productid="@cartitem.Product.ProductId" class="updatecartitem" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/></td>
+            @* <td><input type="number" id="quantity" asp-for="@cartitem.Quantity" onkeyup="updateItem()"></td> *@
+            <td>@(thanhtien.ToString("n0"))</td>
+            <td>
+                @* <button class="btn btn-success updatecartitem"data-productid="@cartitem.Product.ProductId">Update</button> *@
+                <button class="btn btn-danger remove" data-productid="@cartitem.Product.ProductId">Xóa</button>
+            </td>
         </tr>
     }
       <tr>
@@ -47,38 +47,38 @@ else {
 }
 @section Scripts {
     <script>
-          $(document).ready(function () {
-              $(".updatecartitem").click(function (event) {
-                  event.preventDefault();
-                  var productid = $(this).data("productid");
-                  var quantity = $("#quantity-" + productid).val();
-                  $.ajax({
-                      type: "POST",
-                      url:"@Url.Action("UpdateCart", "Home")",
-                      data: {
-                          productid: productid,
-                          quantity:quantity
-                      },
-                      success: function (result) {
-                          if (result.error){
-                          alert(result.message);
-                          return;
-                          }
-                          window.location.href = "@Url.Action("OrderDetail", "Home")";
-                      },
-                      fail: function(result) {
-                         alert("Lỗi ERoRr")
-                      } 
+    $(document).ready(function () {
+                  $(".updatecartitem").keyup(function (event) {
+                      event.preventDefault();
+                      var productid = $(this).data("productid");
+                      var quantity = $("#quantity-" + productid).val();
+                      $.ajax({
+                          type: "POST",
+                          url:"/Home/UpdateCart/",
+                          data: {
+                               productid,
+                              quantity
+                          },
+                          success: function (result) {
+                              if (result.error){
+                              alert(result.message);
+                              return;
+                              }
+                              window.location.href = "@Url.Action("OrderDetail", "Home")";
+                          },
+                          fail: function(result) {
+                             alert("Lỗi ERoRr")
+                          } 
+                      });
                   });
-              });
-          });
-          $(document).ready(function () {
+              
                         $(".remove").click(function (event) {
                             event.preventDefault();
+                            if (confirm("Do you really wait to remove this product out your cart ?")=== true)
                             var productid = $(this).data("productid");
                             $.ajax({
                                 type: "POST",
-                                url:"@Url.Action("RemoveCart","Home")",
+                                url:"/Home/UpdateCart/",
                                 data: {
                                     productid: productid,
                                 },
@@ -96,4 +96,28 @@ else {
                         });
                     });
         </script>
+    @* <script> *@
+    @* // function updateItem(){ *@
+    @* //             var productid = $(this).data("productid"); *@
+    @* //                       var quantity = $("#quantity" + productid).val(); *@
+    @* //             $.ajax({ *@
+    @* //                type:'POST', *@
+    @* //                url: '/Home/UpdateCart/', *@
+    @* //                data: { *@
+    @* //                    productid, *@
+    @* //                     quantity, *@
+    @* //                }, *@
+    @* //                success: function (result) { *@
+    @* //                if (result.error){ *@
+    @* //                alert(result.message); *@
+    @* //                return; *@
+    @* //                } *@
+    @* //                window.location.href = "@Url.Action("OrderDetail", "Home")"; *@
+    @* //                }, *@
+    @* //                fail: function(result) { *@
+    @* //                alert("Lỗi ERoRr") *@
+    @* //                }  *@
+    @* //            }); *@
+    @* //         } *@
+    @* </script> *@
 }
