@@ -18,7 +18,7 @@ namespace eShop.Database
         public string OrderPhone { get; set; }
         public string OrderAddress { get; set; }
         public string OrderName { get; set; }
-        public DateTime OrderDate { get; set; }
+        public DateTime? OrderDate { get; set; }
 
         public virtual User OrderUser { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }

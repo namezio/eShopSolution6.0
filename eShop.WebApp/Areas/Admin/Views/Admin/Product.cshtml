@@ -1,0 +1,81 @@
+@model eShop.WebApp.Areas.Admin.Models.ProductModel; 
+<!DOCTYPE html>
+
+<h1 class="h3 mb-2 text-gray-800">Products</h1>
+
+<!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <a type="button" class="btn btn-primary" href="@Url.Action("CreateProduct","Admin")">Add Product</a>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>ProductId</th>
+                                        <th>ProductName</th>
+                                        <th>ProductPrice</th>
+                                        <th>ProductWeight</th>
+                                        <th>ProductCartDesc</th>
+                                        <th>ProductShortDesc</th>
+                                        <th>ProductLongDesc</th>
+                                        <th>ProductThumb</th>
+                                        <th>ProductImage</th>
+                                        <th>ProductCategoryId</th>
+                                        <th>ProductUpdateDate</th>
+                                        <th>ProductStock</th>
+                                        <th>ProductLive</th>
+                                        <th>ProductUnlimited</th>
+                                        <th>ProductLocation</th>
+                                    </tr>
+                                    </thead>
+                                    <tfoot>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>ProductId</th>
+                                        <th>ProductName</th>
+                                        <th>ProductPrice</th>
+                                        <th>ProductWeight</th>
+                                        <th>ProductCartDesc</th>
+                                        <th>ProductShortDesc</th>
+                                        <th>ProductLongDesc</th>
+                                        <th>ProductThumb</th>
+                                        <th>ProductImage</th>
+                                        <th>ProductCategoryId</th>
+                                        <th>ProductUpdateDate</th>
+                                        <th>ProductStock</th>
+                                        <th>ProductLive</th>
+                                        <th>ProductUnlimited</th>
+                                        <th>ProductLocation</th>
+                                    </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    @foreach (var item in Model.Product)
+                                    {
+                                        <tr>
+                                            <td><a type="button" href="@Url.Action("UpdateProduct","Admin", new {id= @item.ProductId})" class="btn btn-outline-warning">Update</a>
+                                                <a type="button" href="@Url.Action("DeleteProduct","Admin", new {id= @item.ProductId})" class="btn btn-outline-danger">Remove</a></td>
+                                            <td>@item.ProductId</td>
+                                            <td>@item.ProductName</td>
+                                            <td>@item.ProductPrice</td>
+                                            <td>@item.ProductWeight</td>
+                                            <td>@item.ProductCartDesc</td>
+                                            <td>@item.ProductShortDesc</td>
+                                            <td>@item.ProductLongDesc</td>
+                                            <td>@item.ProductThumb</td>
+                                            <td>@item.ProductImage</td>
+                                            <td>@item.ProductCategoryId</td>
+                                            <td>@item.ProductUpdateDate</td>
+                                            <td>@item.ProductStock</td>
+                                            <td>@item.ProductLive</td>
+                                            <td>@item.ProductUnlimited</td>
+                                            <td>@item.ProductLocation</td>
+                                        </tr>
+                                    }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>

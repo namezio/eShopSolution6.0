@@ -1,0 +1,44 @@
+@model eShop.WebApp.Areas.Admin.Models.CategoryModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h1 class="h3 mb-2 text-gray-800">Categories</h1>
+
+<!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <a type="button" class="btn btn-primary" href="@Url.Action("CreateCategory","Admin")">Add Category</a>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>CategoryId</th>
+                                            <th>CategoryName</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>CategoryId</th>
+                                            <th>CategoryName</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    @foreach (var item in Model.Categories)
+                                    {
+                                        <tr>
+                                            <td>@item.CategoryId</td>
+                                            <td>@item.CategoryName</td>
+                                            <td><a type="button" href="@Url.Action("UpdateCategory","Admin", new {id= @item.CategoryId})" class="btn btn-warning">Update</a>
+                                                <a type="button" href="@Url.Action("DeleteCategory","Admin", new {id= @item.CategoryId})" class="btn btn-danger">Remove</a></td>
+                                        </tr>
+                                    }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>

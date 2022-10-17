@@ -1,0 +1,117 @@
+@using eShop.Database
+@model eShop.WebApp.Models.OrderModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+  decimal total = 0;
+  int stt = 1;
+}
+
+<!--Main layout-->
+
+  <main class="mt-5 pt-4">
+    <div class="container wow fadeIn">
+
+      <!-- Heading -->
+      <h2 class="my-5 h2 text-center">Checkout form</h2>
+      <!--Grid row-->
+      <div class="row">
+
+        <!--Grid column-->
+        <div class="col-md-8 mb-4">
+
+          <!--Card-->
+          <div class="card">
+
+            <form method="post" class="m-2 p-3 bg-light">
+              <input type="hidden" asp-for="@Model.OrderUserId"/>
+              <input type="hidden" asp-for="@Model.OrderAmount"/>
+              <div asp-validation-summary="All" class="text-danger"></div>
+              <div class="form-group">
+                <label asp-for="@Model.OrderName">Name</label>
+                <input class="form-control" asp-for="@Model.OrderName" required/>
+                @* <span asp-validation-for="@Model.ProductName" class="text-danger"></span>   *@
+              </div>
+              <div class="form-group">
+                <label asp-for="@Model.OrderPhone">Phone</label>
+                <input class="form-control" asp-for="@Model.OrderPhone" required/>
+                @* <span asp-validation-for="@Model.ProductPrice" class="text-danger"></span> *@
+              </div>
+              <div class="form-group">
+                              <label asp-for="@Model.OrderDate">Amount</label>
+                              <input class="form-control" asp-for="@Model.OrderAmount"/>
+                              @* <span asp-validation-for="@Model.ProductLongDesc" class="text-danger"></span> *@
+                      </div>
+              <div class="form-group">
+                <label asp-for="@Model.OrderAddress">Address</label>
+                <input class="form-control" asp-for="@Model.OrderAddress"/>
+                @* <span asp-validation-for="@Model.ProductLongDesc" class="text-danger"></span> *@
+              </div>
+              <div class="form-group">
+                <input class="btn btn-outline-success" type="submit" title="Create"/>
+              </div>
+            </form>
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-4 mb-4">
+
+          <!-- Heading -->
+
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted">Your Cart</span>
+            <span class="badge badge-secondary badge-pill">@stt</span>
+          </h4>
+
+          <!-- Cart -->
+          
+            <ul class="list-group mb-3 z-depth-1">
+              @foreach (var cartitem in Model.OrderDetail)
+              {
+                var thanhtien = cartitem.Quantity * cartitem.Product.ProductPrice;
+                total += (decimal)thanhtien;
+                stt++;
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                  <div>
+                    <input type="hidden" asp-for="@cartitem.Product.ProductId" id="idProduct"/>
+                    <h6 class="my-0">@cartitem.Product.ProductName</h6>
+                  </div>
+                  <span class="text-muted">@(thanhtien.ToString("n0"))</span>
+                </li>
+              }
+
+              <li class="list-group-item d-flex justify-content-between">
+                <span>Total</span>
+                <strong>@(total.ToString("n0"))</strong>
+              </li>
+            </ul>
+
+          <!-- Cart -->
+
+          <!-- Promo code -->
+          @* <form class="card p-2"> *@
+          @*   <div class="input-group"> *@
+          @*     <input type="text" class="form-control" placeholder="Promo code" aria-label="Recipient's username" aria-describedby="basic-addon2"> *@
+          @*     <div class="input-group-append"> *@
+          @*       <button class="btn btn-secondary btn-md waves-effect m-0" type="button">Redeem</button> *@
+          @*     </div> *@
+          @*   </div> *@
+          @* *@
+          @* </form> *@
+          <!-- Promo code -->
+
+        </div>
+        <!--Grid column-->
+       
+      </div>
+      <!--Grid row-->
+
+    </div>
+  </main>
+  <!--Main layout-->

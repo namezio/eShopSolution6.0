@@ -1,0 +1,100 @@
+@using eShop.Database
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model eShop.Database.Product?
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2 class="display-4">Update Product</h2>
+<form method="post" class="m-2 p-3 bg-light">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+            <input type="hidden" asp-for="@Model.ProductId"/>
+        </div>
+    <div class="form-group">
+        <label asp-for="@Model.ProductName">Product Name</label>
+        <input class="form-control" asp-for="@Model.ProductName" required/>
+        @* <span asp-validation-for="@Model.ProductName" class="text-danger"></span>   *@
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.ProductPrice">Price</label>
+        <input class="form-control" asp-for="@Model.ProductPrice" required/>
+        @* <span asp-validation-for="@Model.ProductPrice" class="text-danger"></span> *@
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.ProductWeight">Weight</label>
+        <input class="form-control" asp-for="@Model.ProductWeight"/>
+        @* <span asp-validation-for="@Model.ProductLongDesc" class="text-danger"></span> *@
+    </div> 
+    <div class="form-group">
+            <label asp-for="@Model.ProductCartDesc">Cart Description</label>
+            <input class="form-control" asp-for="@Model.ProductCartDesc"/>
+            @* <span asp-validation-for="@Model.ProductLongDesc" class="text-danger"></span> *@
+    </div> 
+    <div class="form-group">
+            <label asp-for="@Model.ProductShortDesc">Short Description</label>
+            <input class="form-control" asp-for="@Model.ProductShortDesc" />
+            @* <span asp-validation-for="@Model.ProductLongDesc" class="text-danger"></span> *@
+    </div> 
+    <div class="form-group">
+            <label asp-for="@Model.ProductThumb">Product Thumb</label>
+            <input class="form-control" asp-for="@Model.ProductThumb"/>
+            @* <span asp-validation-for="@Model.ProductLongDesc" class="text-danger"></span> *@
+    </div> 
+    <div class="form-group">
+            <label asp-for="@Model.ProductImage">Image</label>
+            <input class="form-control" asp-for="@Model.ProductImage" required/>
+            @* <span asp-validation-for="@Model.ProductLongDesc" class="text-danger"></span> *@
+    </div> 
+    <div class="form-group">
+                <label asp-for="@Model.ProductCategoryId">Category</label>
+                @* <input class="form-control" type="" asp-for="@Model.ProductCategoryId" required/> *@
+                @* <span asp-validation-for="@Model.ProductLongDesc" class="text-danger"></span> *@
+                @{
+                    eShopEntities db = new eShopEntities();
+                    var cate = db.ProductCategories.ToList();
+                    <select name="ProductCategoryId">
+                        @foreach (var item in cate)
+                        {
+                            var isSelected = item.CategoryId == Model.ProductCategoryId;
+                            if (isSelected)
+                            {
+                                <option value="@item.CategoryId" selected="selected">@item.CategoryName</option>
+                            }
+                            <option value="@item.CategoryId">@item.CategoryName</option>
+                        }
+                    </select>
+                }
+        </div> 
+        <div class="form-group">
+                <label asp-for="@Model.ProductUpdateDate">Update Date</label>
+                <input class="form-control" asp-for="@Model.ProductUpdateDate" />
+                @* <span asp-validation-for="@Model.ProductLongDesc" class="text-danger"></span> *@
+        </div> 
+        <div class="form-group">
+                <label asp-for="@Model.ProductStock">Product Stock</label>
+                <input class="form-control" asp-for="@Model.ProductStock" />
+                @* <span asp-validation-for="@Model.ProductLongDesc" class="text-danger"></span> *@
+        </div> 
+        <div class="form-group">
+                <label asp-for="@Model.ProductLive">Product Live</label>
+                <input class="form-control" asp-for="@Model.ProductLive" />
+                @* <span asp-validation-for="@Model.ProductLongDesc" class="text-danger"></span> *@
+            </div> 
+    <div class="form-group">
+            <label asp-for="@Model.ProductUnlimited">Unlimited</label>
+            <input class="form-control" asp-for="@Model.ProductUnlimited" />
+            @* <span asp-validation-for="@Model.ProductLongDesc" class="text-danger"></span> *@
+        </div> 
+    <div class="form-group">
+        <label asp-for="@Model.ProductLocation">Location</label>
+        @* <span asp-validation-for="@Model.ProductLocation" class="text-danger"></span> *@
+        <input class="form-control" asp-for="@Model.ProductLocation" />
+        </div> 
+    <div class="form-group">
+        <input class="btn btn-outline-success" type="submit" title="Create"/>
+    </div>
+</form>
+

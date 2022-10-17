@@ -23,6 +23,7 @@
       </PackageReference>
       <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="6.0.1" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0-rc.1.22426.10" />
+      <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.10" />
       <PackageReference Include="MySql.EntityFrameworkCore" Version="6.0.4" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
       <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.2" />
@@ -68,6 +69,10 @@
 
     <ItemGroup>
       <Content Include="Views\Home\.DS_Store" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Areas\Admin\Data" />
     </ItemGroup>
 
 </Project>

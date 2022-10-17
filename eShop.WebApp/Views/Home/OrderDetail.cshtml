@@ -39,8 +39,7 @@
       </tr>
   </table>
 
-  @* <a asp-controller="Product" asp-action="Checkout" class="btn btn-success">Gửi đơn hàng</a> *@
-    
+  <a class="btn btn-success" href="@Url.Action("GoToCheckOut","Home")">Gửi đơn hàng</a>
 }
 else {
   <p class="alert alert-danger">Giỏ hàng trống</p>
@@ -96,30 +95,6 @@ else {
                         });
                     });
         </script>
-    @* <script> *@
-    @* // function updateItem(){ *@
-    @* //             var productid = $(this).data("productid"); *@
-    @* //                       var quantity = $("#quantity" + productid).val(); *@
-    @* //             $.ajax({ *@
-    @* //                type:'POST', *@
-    @* //                url: '/Home/UpdateCart/', *@
-    @* //                data: { *@
-    @* //                    productid, *@
-    @* //                     quantity, *@
-    @* //                }, *@
-    @* //                success: function (result) { *@
-    @* //                if (result.error){ *@
-    @* //                alert(result.message); *@
-    @* //                return; *@
-    @* //                } *@
-    @* //                window.location.href = "@Url.Action("OrderDetail", "Home")"; *@
-    @* //                }, *@
-    @* //                fail: function(result) { *@
-    @* //                alert("Lỗi ERoRr") *@
-    @* //                }  *@
-    @* //            }); *@
-    @* //         } *@
-    @* </script> *@
 }
 <style>
 /* Chrome, Safari, Edge, Opera */

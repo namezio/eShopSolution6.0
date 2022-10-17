@@ -61,8 +61,6 @@ namespace eShop.Database
                     .IsRequired()
                     .HasMaxLength(100);
 
-                entity.Property(e => e.OrderDate).ValueGeneratedOnAddOrUpdate();
-
                 entity.Property(e => e.OrderName)
                     .IsRequired()
                     .HasMaxLength(255);
@@ -85,16 +83,19 @@ namespace eShop.Database
 
                 entity.ToTable("OrderDetails", "eShopDb");
 
+                entity.HasIndex(e => e.DetailName, "DetailName");
+
                 entity.HasIndex(e => e.DetailOrderId, "DetailOrderId");
 
                 entity.HasIndex(e => e.DetailProductId, "DetailProductId");
 
-                entity.Property(e => e.DetailName).HasMaxLength(250);
+                entity.Property(e => e.DetailName)
+                    .IsRequired()
+                    .HasMaxLength(250);
 
                 entity.HasOne(d => d.DetailOrder)
                     .WithMany(p => p.OrderDetails)
                     .HasForeignKey(d => d.DetailOrderId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("orderdetails_ibfk_1");
 
                 entity.HasOne(d => d.DetailProduct)
@@ -108,11 +109,13 @@ namespace eShop.Database
             {
                 entity.ToTable("Products", "eShopDb");
 
-                entity.HasIndex(e => e.ProductCategoryId, "ProductCategoryId");
+                entity.HasIndex(e => e.ProductName, "ProductName");
+
+                entity.HasIndex(e => e.ProductCategoryId, "products_ibfk_1");
 
                 entity.Property(e => e.ProductCartDesc).HasMaxLength(250);
 
-                entity.Property(e => e.ProductImage).HasMaxLength(100);
+                entity.Property(e => e.ProductImage).HasMaxLength(1000);
 
                 entity.Property(e => e.ProductLocation).HasMaxLength(250);
 
@@ -127,7 +130,6 @@ namespace eShop.Database
                 entity.HasOne(d => d.ProductCategory)
                     .WithMany(p => p.Products)
                     .HasForeignKey(d => d.ProductCategoryId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("products_ibfk_1");
             });
 
@@ -167,7 +169,7 @@ namespace eShop.Database
                     .WithMany(p => p.ProductOptions)
                     .HasForeignKey(d => d.ProductId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("productoptions_ibfk_2");
+                    .HasConstraintName("productoptions_ibfk_4");
             });
 
             modelBuilder.Entity<User>(entity =>

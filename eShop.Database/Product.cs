@@ -25,8 +25,8 @@ namespace eShop.Database
         public int ProductCategoryId { get; set; }
         public DateTime? ProductUpdateDate { get; set; }
         public float? ProductStock { get; set; }
-        public bool ProductLive { get; set; }
-        public bool ProductUnlimited { get; set; }
+        public bool? ProductLive { get; set; }
+        public bool? ProductUnlimited { get; set; }
         public string ProductLocation { get; set; }
 
         public virtual ProductCategory ProductCategory { get; set; }

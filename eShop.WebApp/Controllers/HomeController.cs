@@ -15,6 +15,34 @@ public class HomeController : Controller
 
     eShopEntities eShop = new eShopEntities();
     public const string CARTKEY = "cart";
+    public const string LOGINKEY = "login";
+
+    public AccountLoginModel GetEmail()
+    {
+        var session = HttpContext.Session;
+        string jsonEmail = session.GetString (LOGINKEY);
+        if (jsonEmail != null) {
+            return JsonConvert.DeserializeObject<AccountLoginModel> (jsonEmail);
+        }
+        return new AccountLoginModel();
+    }
+
+
+    public AccountLoginModel GetLoginSession()
+    {
+        var json = HttpContext.Session.GetString(LOGINKEY);
+        if (string.IsNullOrEmpty(json))
+            return null;
+
+        return JsonConvert.DeserializeObject<AccountLoginModel>(json);
+    }
+    
+    
+    void SaveLoginSession (AccountLoginModel ml) {
+        var session = HttpContext.Session;
+        string jsonEmail = JsonConvert.SerializeObject (ml);
+        session.SetString (LOGINKEY, jsonEmail);
+    }
 
     // Lấy cart từ Session (danh sách CartItem)
     public List<OrderDetailModel> GetCartItems() {
@@ -139,92 +167,12 @@ public class HomeController : Controller
         return View(model);
     }
 
-    public ActionResult CreateProduct()
-    {
-        return View();
-    }
-    [HttpPost]
-    public ActionResult CreateProduct(ProductModel model)
-    {
-        var category = eShop.ProductCategories
-            .Where (p => p.CategoryId == model.ProductCategoryId)
-            .FirstOrDefault();
-        if (category == null)
-            return Json(new { error = true, message = "Your Category not found" });
-        try
-        {
-            var products = new Product()
-            {
-                ProductName = model.ProductName,
-                ProductPrice = model.ProductPrice,
-                ProductCategoryId = model.ProductCategoryId,
-                ProductImage = model.ProductImage,
-                ProductLongDesc = model.ProductLongDesc,
-            };
-            eShop.Products.Add(products);
-            eShop.SaveChanges();
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
-
-        return RedirectToAction("Product", "Home");
-    }
-
     public ActionResult DetailProduct(int id)
     {
         Product? product = eShop.Products.Find(id);
         return View(product);
     }
-    [HttpGet]
-    public ActionResult UpdateProduct(int id)
-    {
-        Product? productModel = eShop.Products.Find(id);
-        return View(productModel);
-    }
-    [HttpPost]
-    public ActionResult UpdateProduct(ProductModel model)
-    {
-        var category = eShop.ProductCategories
-            .Where (p => p.CategoryId == model.ProductCategoryId)
-            .FirstOrDefault();
-        if (category == null)
-            return Json(new { error = true, message = "Your Category not found" });
-        try
-        {
-            var products = eShop.Products.Find(model.ProductId);
-            products.ProductName = model.ProductName;
-            products.ProductImage = model.ProductImage;
-            products.ProductLongDesc = model.ProductLongDesc;
-            products.ProductCategoryId = model.ProductCategoryId;
-            products.ProductPrice = model.ProductPrice;
-            // eShop.Products.Update(products);
-            
-            var z = eShop.SaveChanges();
-            if ( z > 0 )
-            {
-                return RedirectToAction("Product","Home");
-            }
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
 
-        return RedirectToAction("Product", "Home");
-    }
-
-    public ActionResult DeteleProduct(int id)
-    {
-        var model = eShop.Products.Find(id);
-        eShop.Products.Remove(model);
-        eShop.SaveChanges();
-        return RedirectToAction("Product", "Home");
-    }
-    
     [HttpGet]
     public ActionResult Login()
     {
@@ -236,12 +184,11 @@ public class HomeController : Controller
         var Useremail = email;
         var UserPass = password;
         var acc = eShop.Users.SingleOrDefault(x => x.UserEmail == Useremail && x.UserPassword == UserPass);
-        UserModels models = new UserModels();
-        
+        var userid = acc.UserId;
         if (acc!= null)
         {
-            HttpContext.Session.SetString("email", Useremail);
-            return RedirectToAction("OrderDetail", "Home");
+            SaveLoginSession(new AccountLoginModel() {id = userid});
+            return RedirectToAction("Checkout", "Home", new {id = acc.UserId});
         }
         else
         {
@@ -249,62 +196,44 @@ public class HomeController : Controller
         }
     }
 
-    public ActionResult Category()
+    public IActionResult GoToCheckOut()
     {
-        var categories = eShop.ProductCategories.ToList();
-        IndexModel model = new IndexModel();
-        model.Categories = categories;
+        var session = HttpContext.Session;
+        string jsonEmail = session.GetString (LOGINKEY);
+        if (jsonEmail == null)
+        {
+            return RedirectToAction("Login", "Home");
+        }
+        return RedirectToAction("Checkout", "Home");
+        
+    }
+[HttpGet]
+    public IActionResult Checkout()
+    {
+        var cart = GetCartItems();
+        var model = new OrderModel
+        {
+            OrderDetail = cart,
+        };
         return View(model);
     }
-
-    public ActionResult CreateCategory()
+[HttpPost]
+    public IActionResult Checkout(OrderModel model, int id)
     {
-        return View();
-    }
-    [HttpPost]
-    public ActionResult CreateCategory(CategoryModel model)
-    {
-        
-            try
-            {
-                var category = new ProductCategory()
-                {
-                    CategoryName = model.CategoryName
-                };
-                
-                eShop.ProductCategories.Add(category);
-                eShop.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-
-            return RedirectToAction("Category", "Home");
-        
-    }
-    
-    [HttpGet]
-    public ActionResult UpdateCategory(int id)
-    {
-        ProductCategory? categoryModel = eShop.ProductCategories.Find(id);
-        return View(categoryModel);
-    }
-    [HttpPost]
-    public ActionResult UpdateCategory(CategoryModel model)
-    {
+        var user = eShop.Users.Where(p => p.UserId == model.IdUser).FirstOrDefault();
         try
         {
-            var category = eShop.ProductCategories.Find(model.CategoryId);
-            category.CategoryName = model.CategoryName;
-            // eShop.Products.Update(products);
-            
-            var z = eShop.SaveChanges();
-            if ( z > 0 )
+            var order = new Order()
             {
-                return RedirectToAction("Category","Home");
-            }
+                OrderUserId = id,
+                OrderAddress = model.OrderAddress,
+                OrderName = model.OrderName,
+                OrderAmount = model.OrderAmount,
+                OrderDate = DateTime.Now,
+                OrderPhone = model.OrderPhone,
+            };
+            eShop.Orders.Add(order);
+            eShop.SaveChanges();
         }
         catch (Exception e)
         {
@@ -312,17 +241,15 @@ public class HomeController : Controller
             throw;
         }
 
-        return RedirectToAction("Category", "Home");
+        return RedirectToAction("CheckoutSuccess", "Home");
     }
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-
-    public ActionResult DeleteCategory(int id)
+    public IActionResult CheckoutSuccess()
     {
-        var model = eShop.ProductCategories.Find(id);
-        eShop.ProductCategories.Remove(model);
-        eShop.SaveChanges();
-        return RedirectToAction("Category", "Home");
+        var order = eShop.Orders.ToList();
+        OrderSuccessModel model = new OrderSuccessModel();
+        model.OrderModels = order;
+        return View(model);
     }
     public IActionResult Error()
     {

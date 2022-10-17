@@ -15,12 +15,56 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/Views/Home/Category.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9DYXRlZ29yeS5jc2h0bWw=
+[/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/Areas/Admin/Views/Admin/Category.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvQWRtaW4vQ2F0ZWdvcnkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/Views/Home/CreateCategory.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9DcmVhdGVDYXRlZ29yeS5jc2h0bWw=
+[/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/Areas/Admin/Views/Admin/CreateCategory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvQWRtaW4vQ3JlYXRlQ2F0ZWdvcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/Areas/Admin/Views/Admin/CreateProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvQWRtaW4vQ3JlYXRlUHJvZHVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/Areas/Admin/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvQWRtaW4vSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/Areas/Admin/Views/Admin/Product.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvQWRtaW4vUHJvZHVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/Areas/Admin/Views/Admin/UpdateCategory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvQWRtaW4vVXBkYXRlQ2F0ZWdvcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/Areas/Admin/Views/Admin/UpdateProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvQWRtaW4vVXBkYXRlUHJvZHVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/Areas/Admin/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/Areas/Admin/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/Areas/Admin/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/Views/Home/Checkout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9DaGVja291dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/Views/Home/CheckoutSuccess.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9DaGVja291dFN1Y2Nlc3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/Views/Home/CreateProduct.cshtml]
@@ -49,10 +93,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/Views/Home/Product.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcm9kdWN0LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/Views/Home/UpdateCategory.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9VcGRhdGVDYXRlZ29yeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/Views/Home/UpdateProduct.cshtml]
