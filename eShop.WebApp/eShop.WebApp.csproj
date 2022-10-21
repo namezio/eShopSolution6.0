@@ -31,6 +31,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\eShop.Database\eShop.Database.csproj" />
+      <ProjectReference Include="..\eShop.Library\eShop.Library.csproj" />
     </ItemGroup>
 
     <ItemGroup>

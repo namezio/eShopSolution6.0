@@ -284,3 +284,5 @@
 /Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/runtimes/win/lib/net6.0/System.Drawing.Common.dll
 /Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/runtimes/win/lib/net6.0/System.Security.Cryptography.ProtectedData.dll
 /Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/runtimes/win/lib/net6.0/System.Windows.Extensions.dll
+/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/eShop.Library.dll
+/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/eShop.Library.pdb

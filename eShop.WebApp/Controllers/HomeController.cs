@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Text.Json.Serialization;
 using eShop.Database;
+using eShop.Library.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using eShop.WebApp.Models;
 using MySqlX.XDevAPI;
@@ -182,17 +183,17 @@ public class HomeController : Controller
     public ActionResult Login(string email, string password)
     {
         var Useremail = email;
-        var UserPass = password;
+        var UserPass = password.Md5();
         var acc = eShop.Users.SingleOrDefault(x => x.UserEmail == Useremail && x.UserPassword == UserPass);
-        var userid = acc.UserId;
         if (acc!= null)
         {
+            var userid = acc.UserId;
             SaveLoginSession(new AccountLoginModel() {id = userid});
-            return RedirectToAction("Checkout", "Home", new {id = acc.UserId});
+            return RedirectToAction("Checkout", "Home");
         }
         else
         {
-            return View();
+            return Json(new { error = true, message = "Wrong email or password, plese check again !" });
         }
     }
 
@@ -207,7 +208,7 @@ public class HomeController : Controller
         return RedirectToAction("Checkout", "Home");
         
     }
-[HttpGet]
+    [HttpGet]
     public IActionResult Checkout()
     {
         var cart = GetCartItems();
@@ -217,9 +218,10 @@ public class HomeController : Controller
         };
         return View(model);
     }
-[HttpPost]
-    public IActionResult Checkout(OrderModel model, int id)
+    [HttpPost]
+    public IActionResult Checkout(OrderModel model)
     {
+        var id = GetLoginSession().id;
         var user = eShop.Users.Where(p => p.UserId == model.IdUser).FirstOrDefault();
         try
         {
@@ -234,6 +236,7 @@ public class HomeController : Controller
             };
             eShop.Orders.Add(order);
             eShop.SaveChanges();
+            ClearCart();
         }
         catch (Exception e)
         {
@@ -251,6 +254,25 @@ public class HomeController : Controller
         model.OrderModels = order;
         return View(model);
     }
+
+    public IActionResult GetAccount()
+    {
+        var session = HttpContext.Session;
+        string jsonEmail = session.GetString (LOGINKEY);
+        if (jsonEmail == null)
+        {
+            return RedirectToAction("Login", "Home");
+        }
+        return RedirectToAction("Account", "Home");
+    }
+
+    public IActionResult Account()
+    {
+        var id = GetLoginSession().id;
+        User? user = eShop.Users.Find(id);
+        return View(user);
+    }
+    
     public IActionResult Error()
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

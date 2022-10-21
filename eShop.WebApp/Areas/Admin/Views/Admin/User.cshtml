@@ -1,0 +1,58 @@
+@model eShop.WebApp.Areas.Admin.Models.UserModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h1 class="h3 mb-2 text-gray-800">User</h1>
+
+<!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <a type="button" class="btn btn-primary" href="@Url.Action("AddUser","Admin")">Add User</a>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>UserId</th>
+                                        <th>UserEmail</th>
+                                        <th>UserFirstName</th>
+                                        <th>UserLastName</th>
+                                        <th>UserPhone</th>
+                                        <th>UserAddress</th>
+                                    </tr>
+                                    </thead>
+                                    <tfoot>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>UserId</th>
+                                        <th>UserEmail</th>
+                                        <th>UserFirstName</th>
+                                        <th>UserLastName</th>
+                                        <th>UserPhone</th>
+                                        <th>UserAddress</th>
+                                    </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    @foreach (var item in Model.Users)
+                                    {
+                                        <tr>
+                                            <td><a type="button" href="@Url.Action("UpdateUser","Admin", new {id= @item.UserId})" class="btn btn-outline-warning">Update</a>
+                                                <a type="button" href="@Url.Action("RemoveUser","Admin", new {id= @item.UserId})" class="btn btn-outline-danger">Remove</a></td>
+                                            <td>@item.UserId</td>
+                                            <td>@item.UserEmail</td>
+                                            <td>@item.UserFirstName</td>
+                                            <td>@item.UserLastName</td>
+                                            <td>@item.UserPhone</td>
+                                            <td>@item.UserAddress</td>
+                                        </tr>
+                                    }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>

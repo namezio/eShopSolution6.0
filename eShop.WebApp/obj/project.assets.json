@@ -3623,6 +3623,16 @@
         "runtime": {
           "bin/placeholder/eShop.Database.dll": {}
         }
+      },
+      "eShop.Library/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/eShop.Library.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/eShop.Library.dll": {}
+        }
       }
     }
   },
@@ -11109,6 +11119,11 @@
       "type": "project",
       "path": "../eShop.Database/eShop.Database.csproj",
       "msbuildProject": "../eShop.Database/eShop.Database.csproj"
+    },
+    "eShop.Library/1.0.0": {
+      "type": "project",
+      "path": "../eShop.Library/eShop.Library.csproj",
+      "msbuildProject": "../eShop.Library/eShop.Library.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -11127,7 +11142,8 @@
       "MySql.EntityFrameworkCore >= 6.0.4",
       "Newtonsoft.Json >= 13.0.1",
       "Pomelo.EntityFrameworkCore.MySql >= 6.0.2",
-      "eShop.Database >= 1.0.0"
+      "eShop.Database >= 1.0.0",
+      "eShop.Library >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -11157,6 +11173,9 @@
           "projectReferences": {
             "/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.Database/eShop.Database.csproj": {
               "projectPath": "/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.Database/eShop.Database.csproj"
+            },
+            "/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.Library/eShop.Library.csproj": {
+              "projectPath": "/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.Library/eShop.Library.csproj"
             }
           }
         }

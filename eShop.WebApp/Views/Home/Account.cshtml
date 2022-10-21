@@ -1,0 +1,21 @@
+@model eShop.Database.User?
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Info Account</title>
+</head>
+<body>
+<div>
+    <div>Name: @Model.UserFirstName @Model.UserLastName</div>
+    <div>Email: @Model.UserEmail</div>
+    <div>Phone: @Model.UserPhone</div>
+    <div>Address: @Model.UserAddress</div>
+</div>
+</body>
+</html>

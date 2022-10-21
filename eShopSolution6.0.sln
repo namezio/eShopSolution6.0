@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.WebApp", "eShop.WebAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Database", "eShop.Database\eShop.Database.csproj", "{0CA3CEAD-DB6A-413A-81BB-A7DFF3740E22}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Library", "eShop.Library\eShop.Library.csproj", "{1A3B0A02-1C49-4CAB-BD2D-6B6BCA706D79}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{0CA3CEAD-DB6A-413A-81BB-A7DFF3740E22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CA3CEAD-DB6A-413A-81BB-A7DFF3740E22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CA3CEAD-DB6A-413A-81BB-A7DFF3740E22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A3B0A02-1C49-4CAB-BD2D-6B6BCA706D79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A3B0A02-1C49-4CAB-BD2D-6B6BCA706D79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A3B0A02-1C49-4CAB-BD2D-6B6BCA706D79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A3B0A02-1C49-4CAB-BD2D-6B6BCA706D79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

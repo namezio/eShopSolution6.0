@@ -1,4 +1,5 @@
 using eShop.Database;
+using eShop.Library.Extensions;
 using eShop.WebApp.Areas.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
 namespace eShop.WebApp.Areas.Admin.Controllers;
@@ -196,5 +197,103 @@ public class AdminController : Controller
         eShop.ProductCategories.Remove(model);
         eShop.SaveChanges();
         return RedirectToAction("Category", "Admin");
+    }
+
+    public IActionResult Order()
+    {
+        var order = eShop.Orders.ToList();
+        OrderModel model = new OrderModel();
+        model.Orders = order;
+        return View(model);
+    }
+
+    public ActionResult RemoveOrder(int id)
+    {
+        var model = eShop.Orders.Find(id);
+        eShop.Orders.Remove(model);
+        eShop.SaveChanges();
+        return RedirectToAction("Order", "Admin");
+    }
+
+    public ActionResult User()
+    {
+        var user = eShop.Users.ToList();
+        UserModel model = new UserModel();
+        model.Users = user;
+        return View(model);
+    }
+
+    public ActionResult AddUser()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public ActionResult AddUser(UserModel model)
+    {
+        try
+        {
+            var password = model.UserPassword.Md5();
+            var user = new User()
+            {
+                UserAddress = model.UserAddress,
+                UserEmail = model.UserEmail,
+                UserFirstName = model.UserFirstName,
+                UserLastName = model.UserLastName,
+                UserPassword = password,
+                UserPhone = model.UserPhone
+            };
+                
+            eShop.Users.Add(user);
+            eShop.SaveChanges();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+
+        return RedirectToAction("User", "Admin");
+    }
+
+    [HttpGet]
+    public ActionResult UpdateUser(int id)
+    {
+        User? user = eShop.Users.Find(id);
+        return View(user);
+    }
+
+    [HttpPost]
+    public ActionResult UpdateUser(UserModel model)
+    {
+        try
+        {
+            var user = eShop.Users.Find(model.UserId);
+            user.UserEmail = model.UserEmail;
+            user.UserAddress = model.UserAddress;
+            user.UserPhone = model.UserPhone;
+            user.UserFirstName = model.UserFirstName;
+            user.UserLastName = model.UserLastName;
+
+            var z = eShop.SaveChanges();
+            if ( z > 0 )
+            {
+                return RedirectToAction("User","Admin");
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+        return RedirectToAction("User", "Admin");
+    }
+
+    public ActionResult RemoveUser(int id)
+    {
+        var user = eShop.Users.Find(id);
+        eShop.Users.Remove(user);
+        eShop.SaveChanges();
+        return RedirectToAction("User", "Admin");
     }
 }

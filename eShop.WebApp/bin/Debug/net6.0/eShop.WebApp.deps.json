@@ -22,7 +22,8 @@
           "MySql.EntityFrameworkCore": "6.0.4",
           "Newtonsoft.Json": "13.0.1",
           "Pomelo.EntityFrameworkCore.MySql": "6.0.2",
-          "eShop.Database": "1.0.0"
+          "eShop.Database": "1.0.0",
+          "eShop.Library": "1.0.0"
         },
         "runtime": {
           "eShop.WebApp.dll": {}
@@ -2633,6 +2634,11 @@
         "runtime": {
           "eShop.Database.dll": {}
         }
+      },
+      "eShop.Library/1.0.0": {
+        "runtime": {
+          "eShop.Library.dll": {}
+        }
       }
     }
   },
@@ -4092,6 +4098,11 @@
       "hashPath": "system.xml.xmldocument.4.3.0.nupkg.sha512"
     },
     "eShop.Database/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "eShop.Library/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

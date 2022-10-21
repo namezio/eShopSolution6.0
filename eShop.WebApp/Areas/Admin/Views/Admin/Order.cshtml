@@ -1,0 +1,57 @@
+@model eShop.WebApp.Areas.Admin.Models.OrderModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h1 class="h3 mb-2 text-gray-800">Order</h1>
+
+<!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>OrderId</th>
+                                        <th>OrderUserId</th>
+                                        <th>OrderAmount</th>
+                                        <th>OrderPhone</th>
+                                        <th>OrderAddress</th>
+                                        <th>OrderName</th>
+                                        <th>OrderDate</th>
+                                    </tr>
+                                    </thead>
+                                    <tfoot>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>OrderId</th>
+                                        <th>OrderUserId</th>
+                                        <th>OrderAmount</th>
+                                        <th>OrderPhone</th>
+                                        <th>OrderAddress</th>
+                                        <th>OrderName</th>
+                                        <th>OrderDate</th>
+                                    </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    @foreach (var item in Model.Orders)
+                                    {
+                                        <tr>
+                                            <td><a type="button" href="@Url.Action("RemoveOrder","Admin", new {id= @item.OrderId})" class="btn btn-outline-danger">Remove</a></td>
+                                            <td>@item.OrderId</td>
+                                            <td>@item.OrderUserId</td>
+                                            <td>@item.OrderAmount</td>
+                                            <td>@item.OrderPhone</td>
+                                            <td>@item.OrderAddress</td>
+                                            <td>@item.OrderName</td>
+                                            <td>@item.OrderDate</td>
+                                        </tr>
+                                    }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
