@@ -56,7 +56,7 @@
                                     {
                                         <tr>
                                             <td><a type="button" href="@Url.Action("UpdateProduct","Admin", new {id= @item.ProductId})" class="btn btn-outline-warning">Update</a>
-                                                <a type="button" href="@Url.Action("DeleteProduct","Admin", new {id= @item.ProductId})" class="btn btn-outline-danger">Remove</a></td>
+                                                <a type="button" href="@Url.Action("DeleteProduct","Admin", new {id= @item.ProductId})" onclick="return confirm('Are you sure you want to delete this product?');" class="btn btn-outline-danger">Remove</a></td>
                                             <td>@item.ProductId</td>
                                             <td>@item.ProductName</td>
                                             <td>@item.ProductPrice</td>

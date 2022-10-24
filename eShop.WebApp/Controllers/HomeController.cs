@@ -215,6 +215,7 @@ public class HomeController : Controller
         var model = new OrderModel
         {
             OrderDetail = cart,
+            OrderAmount = cart.Sum(x=>x.Quantity*x.Product.ProductPrice)
         };
         return View(model);
     }
