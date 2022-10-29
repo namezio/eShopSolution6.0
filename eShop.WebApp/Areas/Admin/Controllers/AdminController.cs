@@ -19,7 +19,7 @@ public class AdminController : Controller
     [HttpGet]
     public IActionResult Product()
     {
-        var products = eShop.Products.ToList();
+        var products = eShop.Products.Where(p=> p.ProductStatus==false && p.ProductCategory.CategoryStatus == false).ToList();
         ProductModel model = new ProductModel();
         model.Product = products;
         return View(model);
@@ -120,14 +120,26 @@ public class AdminController : Controller
 
     public ActionResult DeleteProduct(int id)
     {
-        var model = eShop.Products.Find(id);
-        eShop.Products.Remove(model);
-        eShop.SaveChanges();
+        try
+        {
+            var products = eShop.Products.Find(id);
+            products.ProductStatus = true;
+            var z = eShop.SaveChanges();
+            if ( z > 0 )
+            {
+                return RedirectToAction("Product","Admin");
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
         return RedirectToAction("Product", "Admin");
     }
     public ActionResult Category()
     {
-        var categories = eShop.ProductCategories.ToList();
+        var categories = eShop.ProductCategories.Where(p=> p.CategoryStatus ==false).ToList();
         CategoryModel model = new CategoryModel();
         model.Categories = categories;
         return View(model);
@@ -193,9 +205,21 @@ public class AdminController : Controller
     [HttpGet]
     public ActionResult DeleteCategory(int id)
     {
-        var model = eShop.ProductCategories.Find(id);
-        eShop.ProductCategories.Remove(model);
-        eShop.SaveChanges();
+        try
+        {
+            var cate = eShop.ProductCategories.Find(id);
+            cate.CategoryStatus = true;
+            var z = eShop.SaveChanges();
+            if ( z > 0 )
+            {
+                return RedirectToAction("Category","Admin");
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
         return RedirectToAction("Category", "Admin");
     }
 
@@ -209,8 +233,8 @@ public class AdminController : Controller
 
     public ActionResult RemoveOrder(int id)
     {
-        var model = eShop.Orders.Find(id);
-        eShop.Orders.Remove(model);
+        var order = eShop.Orders.Find(id);
+        eShop.Orders.Remove(order);
         eShop.SaveChanges();
         return RedirectToAction("Order", "Admin");
     }

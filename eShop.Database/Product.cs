@@ -28,6 +28,7 @@ namespace eShop.Database
         public bool? ProductLive { get; set; }
         public bool? ProductUnlimited { get; set; }
         public string ProductLocation { get; set; }
+        public bool ProductStatus { get; set; }
 
         public virtual ProductCategory ProductCategory { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
