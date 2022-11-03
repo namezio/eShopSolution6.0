@@ -2,7 +2,12 @@ using eShop.Database;
 using eShop.Library.Extensions;
 using eShop.WebApp.Areas.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System;
+using System.Linq.Dynamic;
+
 namespace eShop.WebApp.Areas.Admin.Controllers;
+
 
 [Area("Admin")]
 public class AdminController : Controller
@@ -21,10 +26,70 @@ public class AdminController : Controller
     {
         var products = eShop.Products.Where(p=> p.ProductStatus==false && p.ProductCategory.CategoryStatus == false).ToList();
         ProductModel model = new ProductModel();
-        model.Product = products;
+        //model.Product = products;
         return View(model);
     }
+    
+    [HttpPost]
+    public ActionResult GetProduct()
+    {
+        var draw = Request.Form["draw"].FirstOrDefault();
+        var start = Request.Form["start"].FirstOrDefault();
+        var length = Request.Form["length"].FirstOrDefault();
+        var searchValue = Request.Form["search[Value]"].FirstOrDefault();
+        int pageSize = length != null ? Convert.ToInt32(length) : 0;
+        int skip = start != null ? Convert.ToInt32(start) : 0;
+        int recordsTotal = 0;
+        
+        List<Product> products = new List<Product>();
+        using (eShop)
+        {
+            products = eShop.Products.Where(p=> !p.ProductStatus && !p.ProductCategory.CategoryStatus).ToList();
+        }
+        
+        var data = new List<ProductModel>();
+        foreach (var item in products)
+        {
+            var functions = "<div class=\"text-center\"><div class=\"btn-group\">";
+            functions +=
+                $"<button type=\"button\" class=\"btn btn-warning btn-xs\" onclick=\"editProduct('{item.ProductId.ToString()}')\"><i class=\"fas fa fa-pencil-alt\"></i>Sửa</button>";
+            functions +=
+                $"<button type=\"button\" class=\"btn btn-danger btn-xs\" onclick=\"removeProduct('{item.ProductId.ToString()}')\"><i class=\"fas fa fa-trash\"></i> Xóa</button>";
+            functions += "</div></div>";
 
+            var product = new ProductModel
+            {
+                ProductButton = functions,
+                ProductId = item.ProductId,
+                ProductName = item.ProductName,
+                ProductPrice = item.ProductPrice,
+                ProductCartDesc = item.ProductCartDesc,
+                ProductImage = item.ProductImage,
+                ProductLive = item.ProductLive,
+                ProductStock = item.ProductStock,
+                ProductLongDesc = item.ProductLongDesc,
+                ProductThumb = item.ProductThumb,
+                ProductShortDesc = item.ProductShortDesc,
+                ProductWeight = item.ProductWeight,
+                ProductCategoryId = item.ProductCategoryId,
+                ProductUpdateDate = item.ProductUpdateDate,
+                ProductLocation = item.ProductLocation,
+                ProductUnlimited = item.ProductUnlimited
+            };
+            
+            data.Add(product);
+        }
+        //search
+        if (!string.IsNullOrEmpty(searchValue))
+        {
+            data = data.Where(x => x.ProductName.Contains(searchValue)).ToList();
+        }
+
+        recordsTotal = data.Count;
+        data = data.OrderByDescending(n => n.ProductId).Skip(skip).Take(pageSize).ToList();
+        return Json(new { data = data ,draw = draw , recordsFilter = recordsTotal, recordsTotal = recordsTotal});
+    }
+    
     public IActionResult CreateProduct()
     {
         return View();
@@ -34,8 +99,7 @@ public class AdminController : Controller
     public IActionResult CreateProduct(ProductModel model)
     {
         var category = eShop.ProductCategories
-            .Where(p => p.CategoryId == model.ProductCategoryId)
-            .FirstOrDefault();
+            .FirstOrDefault(p => p.CategoryId == model.ProductCategoryId);
         if (category == null)
             return Json(new { error = true, message = "Your Category not found" });
         try

@@ -49,6 +49,8 @@
           "MySql.EntityFrameworkCore": "6.0.4",
           "Newtonsoft.Json": "13.0.1",
           "Pomelo.EntityFrameworkCore.MySql": "6.0.2",
+          "System.Linq.Dynamic": "1.0.8",
+          "datatables.net": "1.12.1",
           "eShop.Database": "1.0.0",
           "eShop.Library": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery": "6.0.0.0",
@@ -356,6 +358,11 @@
           "lib/netstandard1.5/Castle.Core.dll": {}
         }
       },
+      "datatables.net/1.12.1": {
+        "dependencies": {
+          "jQuery": "1.7.0"
+        }
+      },
       "EntityFramework/6.4.4": {
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
@@ -398,6 +405,7 @@
           }
         }
       },
+      "jQuery/1.7.0": {},
       "K4os.Compression.LZ4/1.2.6": {
         "dependencies": {
           "System.Memory": "4.5.4"
@@ -2726,6 +2734,17 @@
           "System.Runtime.Extensions": "4.3.0"
         }
       },
+      "System.Linq.Dynamic/1.0.8": {
+        "runtime": {
+          "lib/net40/System.Linq.Dynamic.dll": {
+            "assemblyVersion": "1.0.6132.35681",
+            "fileVersion": "0.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net40/System.Linq.Dynamic.dll": {}
+        }
+      },
       "System.Linq.Expressions/4.3.0": {
         "dependencies": {
           "System.Collections": "4.3.0",
@@ -4916,6 +4935,13 @@
       "path": "castle.core/4.4.1",
       "hashPath": "castle.core.4.4.1.nupkg.sha512"
     },
+    "datatables.net/1.12.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7ArWbq7HCVj6uciLXUoFlW1ZvfYNbCPxFnniAjD4NKb/iAsTYWGZYRjdH3Ir8+0N8rR6muPTF5nZ4Mqf1nUn9A==",
+      "path": "datatables.net/1.12.1",
+      "hashPath": "datatables.net.1.12.1.nupkg.sha512"
+    },
     "EntityFramework/6.4.4": {
       "type": "package",
       "serviceable": true,
@@ -4936,6 +4962,13 @@
       "sha512": "sha512-OiKusGL20vby4uDEswj2IgkdchC1yQ6rwbIkZDVBPIR6al2b7n3pC91elBul9q33KaBgRKhbZH3+2Ur4fnWx2A==",
       "path": "humanizer.core/2.8.26",
       "hashPath": "humanizer.core.2.8.26.nupkg.sha512"
+    },
+    "jQuery/1.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UEZuBreHZNLao3z9zNPeSadyoPwKDP/5kFh+Mn1Pm9ZS0czk7bv0O6RreloGSIMAfTLZCiigNkuPb2bXKtUM+g==",
+      "path": "jquery/1.7.0",
+      "hashPath": "jquery.1.7.0.nupkg.sha512"
     },
     "K4os.Compression.LZ4/1.2.6": {
       "type": "package",
@@ -6021,6 +6054,13 @@
       "sha512": "sha512-5DbqIUpsDp0dFftytzuMmc0oeMdQwjcP/EWxsksIz/w1TcFRkZ3yKKz0PqiYFMmEwPSWw+qNVqD7PJ889JzHbw==",
       "path": "system.linq/4.3.0",
       "hashPath": "system.linq.4.3.0.nupkg.sha512"
+    },
+    "System.Linq.Dynamic/1.0.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-nh+3I/wcZcyQ4p8DKMhy/PH4sGKONrrGlx+eqpqrRTDHe6gyDTF5nK0AIXitDuzvtNTOkvpJWvPd0xdzEmlQjA==",
+      "path": "system.linq.dynamic/1.0.8",
+      "hashPath": "system.linq.dynamic.1.0.8.nupkg.sha512"
     },
     "System.Linq.Expressions/4.3.0": {
       "type": "package",

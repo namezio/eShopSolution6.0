@@ -262,6 +262,14 @@
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
               "version": "[6.0.2, )"
+            },
+            "System.Linq.Dynamic": {
+              "target": "Package",
+              "version": "[1.0.8, )"
+            },
+            "datatables.net": {
+              "target": "Package",
+              "version": "[1.12.1, )"
             }
           },
           "imports": [

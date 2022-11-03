@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hoJCW/Oy9iBvr33EKuhDG7hgToaHxUXVP0tx+YwkvRQ=",
+  "Hash": "5UcEFE0Msdoyo2M6MJCi7LpYvR6o0XxkY8ldNMIBSgk=",
   "Source": "eShop.WebApp",
   "BasePath": "_content/eShop.WebApp",
   "Mode": "Default",
@@ -16,6 +16,40 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "/Users/macbook/.nuget/packages/datatables.net/1.12.1/contentFiles/any/any/wwwroot/js/jquery.dataTables.js",
+      "SourceId": "eShop.WebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/wwwroot/",
+      "BasePath": "_content/eShop.WebApp",
+      "RelativePath": "js/jquery.dataTables.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "/Users/macbook/.nuget/packages/datatables.net/1.12.1/contentFiles/any/any/wwwroot/js/jquery.dataTables.js"
+    },
+    {
+      "Identity": "/Users/macbook/.nuget/packages/datatables.net/1.12.1/contentFiles/any/any/wwwroot/js/jquery.dataTables.min.js",
+      "SourceId": "eShop.WebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/wwwroot/",
+      "BasePath": "_content/eShop.WebApp",
+      "RelativePath": "js/jquery.dataTables.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "/Users/macbook/.nuget/packages/datatables.net/1.12.1/contentFiles/any/any/wwwroot/js/jquery.dataTables.min.js"
+    },
     {
       "Identity": "/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/obj/Debug/net6.0/scopedcss/bundle/eShop.WebApp.styles.css",
       "SourceId": "eShop.WebApp",

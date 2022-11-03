@@ -4,6 +4,7 @@ namespace eShop.WebApp.Areas.Admin.Models;
 
 public class ProductModel
 {
+    public string ProductButton { get; set; }
     public int ProductId { get; set; }
     public string ProductName { get; set; }
     public float ProductPrice { get; set; }
@@ -14,13 +15,10 @@ public class ProductModel
     public string ProductThumb { get; set; }
     public string ProductImage { get; set; }
     public int ProductCategoryId { get; set; }
-    public DateTime ProductUpdateDate { get; set; }
-    public float ProductStock { get; set; }
-    public bool ProductLive { get; set; }
-    public bool ProductUnlimited { get; set; }
+    public DateTime? ProductUpdateDate { get; set; }
+    public float? ProductStock { get; set; }
+    public bool? ProductLive { get; set; }
+    public bool? ProductUnlimited { get; set; }
     public string ProductLocation { get; set; }
-    
-    public ProductCategory Category { get; set; }
-    public List<Product> Product { get; set; }
     
 }

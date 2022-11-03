@@ -564,3 +564,4 @@
 /Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.dll
 /Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/Microsoft.Extensions.DependencyModel.dll
 /Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/obj/Debug/net6.0/eShop.WebApp.MvcApplicationPartsAssemblyInfo.cs
+/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/System.Linq.Dynamic.dll
