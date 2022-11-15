@@ -35,7 +35,7 @@ else
 							<span class="review-no">41 reviews</span>
 						</div>
 						<p class="product-description">@Model.ProductLongDesc</p>
-						<h4 class="price">current price: <span>@Model.ProductPrice VND</span></h4>
+						<h4 class="price">current price: <span>@Model.ProductPrice.ToString("n0") VND</span></h4>
                         <div class="action">
                             <a class="add-to-cart btn btn-default" href="@Url.Action("AddToCart","Home",new {id = @Model.ProductId})" type="button">add to cart</a>
                         </div>

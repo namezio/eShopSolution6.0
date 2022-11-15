@@ -185,16 +185,13 @@ public class HomeController : Controller
         var Useremail = email;
         var UserPass = password.Md5();
         var acc = eShop.Users.SingleOrDefault(x => x.UserEmail == Useremail && x.UserPassword == UserPass);
-        if (acc!= null)
+        if (acc != null)
         {
             var userid = acc.UserId;
             SaveLoginSession(new AccountLoginModel() {id = userid});
             return RedirectToAction("Checkout", "Home");
         }
-        else
-        {
-            return Json(new { error = true, message = "Wrong email or password, plese check again !" });
-        }
+        return Json(new { error = true, message = "Wrong email or password, plese check again !" });
     }
 
     public IActionResult GoToCheckOut()
@@ -217,12 +214,14 @@ public class HomeController : Controller
             OrderDetail = cart,
             OrderAmount = cart.Sum(x=>x.Quantity*x.Product.ProductPrice)
         };
+        
         return View(model);
     }
     [HttpPost]
     public IActionResult Checkout(OrderModel model)
     {
         var id = GetLoginSession().id;
+        var cart = GetCartItems();
         var user = eShop.Users.Where(p => p.UserId == model.IdUser).FirstOrDefault();
         try
         {
@@ -233,8 +232,19 @@ public class HomeController : Controller
                 OrderName = model.OrderName,
                 OrderAmount = model.OrderAmount,
                 OrderDate = DateTime.Now,
-                OrderPhone = model.OrderPhone,
+                OrderPhone = model.OrderPhone
             };
+            foreach (var a in cart)
+            {
+                var orderDetail = new OrderDetail()
+                {
+                    DetailProductId = a.Product.ProductId,
+                    DetailName = a.Product.ProductName,
+                    DetailPrice = a.Product.ProductPrice,
+                    DetailQuantily = a.Quantity
+                };
+                order.OrderDetails.Add(orderDetail);
+            }
             eShop.Orders.Add(order);
             eShop.SaveChanges();
             ClearCart();
@@ -272,6 +282,42 @@ public class HomeController : Controller
         var id = GetLoginSession().id;
         User? user = eShop.Users.Find(id);
         return View(user);
+    }
+
+    public ActionResult SignUp()
+    {
+        return View();
+    }
+    
+    [HttpPost]
+    public ActionResult SignUp(SignUpModel model)
+    {
+        var email = eShop.Users.SingleOrDefault(x => x.UserEmail == model.UserEmail);
+        if (email != null)
+        {
+            return Json(new { error = true, message = "This email has been registered, please chose another email !" });
+        }
+        try
+        {
+            var users = new User()
+            {
+                UserEmail = model.UserEmail,
+                UserPassword = model.UserPassword.Md5(),
+                UserPhone = model.UserPhone,
+                UserAddress = model.UserAddress,
+                UserFirstName = model.UserFirstName,
+                UserLastName = model.UserLastName,
+            };
+            eShop.Users.Add(users);
+            eShop.SaveChanges();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+
+        return RedirectToAction("Login", "Home");
     }
     
     public IActionResult Error()
