@@ -55,6 +55,7 @@ public class HomeController : Controller
         }
         return new List<OrderDetailModel> ();
     }
+    
 
     // Xóa cart khỏi session
     void ClearCart () {
@@ -132,10 +133,7 @@ public class HomeController : Controller
             {
                 return Json(new { error = true, message = "Quantity must <100" });
             }
-            // else
-            // {
-            //     return Json(new { error = true, message = "Your input is uncorrect !" });
-            // }
+            
         }
         SaveCartSession (cart);
         return Json(new {error = false, message = ""});
@@ -180,18 +178,19 @@ public class HomeController : Controller
         return View();
     }
     [HttpPost]
-    public ActionResult Login(string email, string password)
+    public ActionResult GetLogin(string email, string password)
     {
         var Useremail = email;
-        var UserPass = password.Md5();
+        var UserPass = password.Trim().Md5();
         var acc = eShop.Users.SingleOrDefault(x => x.UserEmail == Useremail && x.UserPassword == UserPass);
-        if (acc != null)
+        if (acc == null)
         {
-            var userid = acc.UserId;
-            SaveLoginSession(new AccountLoginModel() {id = userid});
-            return RedirectToAction("Checkout", "Home");
+            // return RedirectToAction("Checkout", "Home");
+            return Json(new { error = true, message = "Wrong email or password, plese check again !" });
         }
-        return Json(new { error = true, message = "Wrong email or password, plese check again !" });
+        var userid = acc.UserId;
+        SaveLoginSession(new AccountLoginModel() {id = userid});
+        return Json(new { error = false, message = "" });
     }
 
     public IActionResult GoToCheckOut()
@@ -318,6 +317,13 @@ public class HomeController : Controller
         }
 
         return RedirectToAction("Login", "Home");
+    }
+
+    public ActionResult LogOut()
+    {
+        var session = HttpContext.Session;
+        session.Remove(LOGINKEY);
+        return RedirectToAction("Index");
     }
     
     public IActionResult Error()
