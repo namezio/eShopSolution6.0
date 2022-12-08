@@ -11,6 +11,6 @@ build_property.RootNamespace = eShop.API
 build_property.ProjectDir = /Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.API/
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = /Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.API
 build_property._RazorSourceGeneratorDebug = 
