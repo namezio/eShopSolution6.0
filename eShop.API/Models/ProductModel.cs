@@ -21,6 +21,5 @@ public class ProductModel
     public string ProductLocation { get; set; }
     public bool ProductStatus { get; set; }
     
-    public ProductCategory Category { get; set; }
     
 }
