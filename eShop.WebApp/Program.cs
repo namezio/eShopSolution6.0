@@ -18,9 +18,9 @@ services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
-
+services.AddDbContextPool<eShopEntities>(options => options.UseLazyLoadingProxies().UseMySQL(builder.Configuration.GetConnectionString("eShop")));
 var app = builder.Build();
-// services.AddDbContextPool<eShopEntities>(options => options.UseLazyLoadingProxies().UseMySQL(builder.Configuration.GetConnectionString("eShop")));
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

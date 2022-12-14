@@ -12,7 +12,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddCors(options => options.AddDefaultPolicy(policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
 
-builder.Services.AddDbContext<eShopEntities>(option 
+builder.Services.AddDbContextPool<eShopEntities>(option 
     => option.UseMySQL(builder.Configuration.GetConnectionString("eShop")));
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 var app = builder.Build();

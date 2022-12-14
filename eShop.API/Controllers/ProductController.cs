@@ -9,14 +9,15 @@ public class ProductController :ControllerBase
 {
     private eShopEntities _entities = new eShopEntities();
 
-    // public ProductController(eShopEntities entities)
-    // {
-    //     entities = _entities;
-    // }
+    public ProductController(eShopEntities entities)
+    {
+        entities = _entities;
+    }
 
     [HttpGet("Product")]
     public JsonResult GetProduct()
     {
+        _entities.Products.Count();
         var data = _entities.Products.ToList(); 
         return new JsonResult(data);
     }
@@ -24,6 +25,7 @@ public class ProductController :ControllerBase
     [HttpGet("ProductDetail/{id}")]
     public JsonResult GetProduct(int id)
     {
+        _entities.Products.Count();
         var product = _entities.Products.Where(p => p.ProductId == id).FirstOrDefault();
         return new JsonResult(product);
     }

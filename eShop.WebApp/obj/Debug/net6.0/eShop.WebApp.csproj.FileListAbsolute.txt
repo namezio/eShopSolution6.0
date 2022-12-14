@@ -45,7 +45,6 @@
 /Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/Microsoft.Extensions.Identity.Stores.dll
 /Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/Microsoft.Win32.SystemEvents.dll
 /Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/MySql.Data.dll
-/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/Ubiety.Dns.Core.dll
 /Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/ZstdNet.dll
 /Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/MySql.EntityFrameworkCore.dll
 /Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/MySqlConnector.dll
@@ -375,7 +374,6 @@
 /Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/refs/Microsoft.Extensions.Configuration.UserSecrets.dll
 /Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/refs/Microsoft.Extensions.Configuration.Xml.dll
 /Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/refs/Microsoft.Extensions.DependencyInjection.Abstractions.dll
-/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/refs/Microsoft.Extensions.DependencyInjection.dll
 /Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/refs/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
 /Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/refs/Microsoft.Extensions.Diagnostics.HealthChecks.dll
 /Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/refs/Microsoft.Extensions.Features.dll
@@ -565,3 +563,8 @@
 /Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/Microsoft.Extensions.DependencyModel.dll
 /Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/obj/Debug/net6.0/eShop.WebApp.MvcApplicationPartsAssemblyInfo.cs
 /Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/System.Linq.Dynamic.dll
+/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.dll
+/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/Microsoft.OpenApi.dll
+/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/Swashbuckle.AspNetCore.Swagger.dll
+/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Users/macbook/Desktop/Codes/eShopSolution6.0/eShop.WebApp/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll

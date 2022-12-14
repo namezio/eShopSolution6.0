@@ -13,8 +13,13 @@ namespace eShop.WebApp.Areas.Admin.Controllers;
 public class AdminController : Controller
 {
     private readonly ILogger<AdminController> _logger;
+    private readonly eShopEntities _db;
     eShopEntities eShop = new eShopEntities();
 
+    public AdminController(eShopEntities db)
+    {
+        _db = db;
+    }
     // GET
     public IActionResult Index()
     {
@@ -24,6 +29,7 @@ public class AdminController : Controller
     [HttpGet]
     public IActionResult Product()
     {
+        _db.Products.Count();
         var products = eShop.Products.Where(p=> p.ProductStatus==false && p.ProductCategory.CategoryStatus == false).ToList();
         ProductModel model = new ProductModel();
         //model.Product = products;
