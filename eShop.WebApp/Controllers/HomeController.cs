@@ -4,6 +4,7 @@ using eShop.Database;
 using eShop.Library.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using eShop.WebApp.Models;
+using eShop.WebApp.Repository;
 using MySqlX.XDevAPI;
 using Newtonsoft.Json;
 
@@ -13,19 +14,20 @@ namespace eShop.WebApp.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-
+    private readonly ISessionManager _sessionManager;
+    
+    public HomeController(ISessionManager sessionManager)
+    {
+        _sessionManager = sessionManager;
+    }
+    
     eShopEntities eShop = new eShopEntities();
     public const string CARTKEY = "cart";
     public const string LOGINKEY = "login";
 
     public AccountLoginModel GetEmail()
     {
-        var session = HttpContext.Session;
-        string jsonEmail = session.GetString (LOGINKEY);
-        if (jsonEmail != null) {
-            return JsonConvert.DeserializeObject<AccountLoginModel> (jsonEmail);
-        }
-        return new AccountLoginModel();
+        return _sessionManager.GetValue<AccountLoginModel>(LOGINKEY);
     }
 
 
@@ -39,35 +41,28 @@ public class HomeController : Controller
     }
     
     
-    void SaveLoginSession (AccountLoginModel ml) {
-        var session = HttpContext.Session;
-        string jsonEmail = JsonConvert.SerializeObject (ml);
-        session.SetString (LOGINKEY, jsonEmail);
+    public void SaveLoginSession(AccountLoginModel ml)
+    {
+        _sessionManager.SetValue(LOGINKEY, ml);
     }
 
     // Lấy cart từ Session (danh sách CartItem)
-    public List<OrderDetailModel> GetCartItems() {
-
-        var session = HttpContext.Session;
-        string jsoncart = session.GetString (CARTKEY);
-        if (jsoncart != null) {
-            return JsonConvert.DeserializeObject<List<OrderDetailModel>> (jsoncart);
-        }
-        return new List<OrderDetailModel> ();
+    public List<OrderDetailModel> GetCartItems()
+    {
+        return _sessionManager.GetValue<List<OrderDetailModel>>(CARTKEY);
     }
     
 
     // Xóa cart khỏi session
-    void ClearCart () {
-        var session = HttpContext.Session;
-        session.Remove (CARTKEY);
+    public void ClearCart()
+    {
+        _sessionManager.Remove(CARTKEY);
     }
 
     // Lưu Cart (Danh sách CartItem) vào session
-    void SaveCartSession (List<OrderDetailModel> ls) {
-        var session = HttpContext.Session;
-        string jsoncart = JsonConvert.SerializeObject (ls);
-        session.SetString (CARTKEY, jsoncart);
+    public void SaveCartSession(List<OrderDetailModel> ls)
+    {
+        _sessionManager.SetValue(CARTKEY, ls);
     }
     public HomeController(ILogger<HomeController> logger)
     {
@@ -88,29 +83,33 @@ public class HomeController : Controller
     {
         return View(GetCartItems());
     }
-    public IActionResult AddToCart (int id) {
-
+    public IActionResult AddToCart(int id, ISessionManager sessionManager)
+    {
         var product = eShop.Products
-            .Where (p => p.ProductId == id)
+            .Where(p => p.ProductId == id)
             .FirstOrDefault();
         if (product == null)
-            return NotFound ("Không có sản phẩm");
+            return NotFound("Không có sản phẩm");
+
         // Xử lý đưa vào Cart ...
-        var cart = GetCartItems ();
-        var cartitem = cart.Find (p => p.Product.ProductId == id);
-        if (cartitem != null) {
+        var cart = sessionManager.GetValue<List<OrderDetailModel>>(CARTKEY);
+        var cartitem = cart.Find(p => p.Product.ProductId == id);
+        if (cartitem != null)
+        {
             // Đã tồn tại, tăng thêm 1
-            
             cartitem.Quantity++;
-        } else {
+        }
+        else
+        {
             //  Thêm mới
-            cart.Add (new OrderDetailModel() { Quantity  = 1, Product = product });
+            cart.Add(new OrderDetailModel() { Quantity = 1, Product = product });
         }
 
         // Lưu cart vào Session
-        SaveCartSession (cart);
+        sessionManager.SetValue(CARTKEY, cart);
+
         // Chuyển đến trang hiện thị Cart
-        return RedirectToAction("OrderDetail","Home");
+        return RedirectToAction("OrderDetail", "Home");
     }
     
     [HttpPost]
