@@ -3,7 +3,7 @@ using eShop.Database;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eShop.API.Controllers;
-
+[Route("[controller]")]
 public class CategoryController :ControllerBase
 {
     private eShopEntities _entities = new eShopEntities();
@@ -13,7 +13,8 @@ public class CategoryController :ControllerBase
     //     entities = _entities;
     // }
     
-    [HttpGet("Category")]
+    [HttpGet("GetCate")]
+    [Produces("application/json")]
     public JsonResult GetCategory()
     {
         var data = _entities.ProductCategories.ToList(); 
@@ -21,6 +22,7 @@ public class CategoryController :ControllerBase
     }
     
     [HttpGet("Category/{id}")]
+    [Produces("application/json")]
     public JsonResult GetCategory(int id)
     {
         var category = _entities.ProductCategories.Where(p => p.CategoryId == id).FirstOrDefault();
@@ -28,6 +30,7 @@ public class CategoryController :ControllerBase
     }
 
     [HttpPost("AddCategory")]
+    [Produces("application/json")]
     public JsonResult CreateCategory(string categoryName)
     {
         try
@@ -49,6 +52,7 @@ public class CategoryController :ControllerBase
     }
 
     [HttpPut("UpdateCategory/{id}")]
+    [Produces("application/json")]
     public JsonResult UpdateCategory(int id, string categoryName)
     {
         try
@@ -75,6 +79,7 @@ public class CategoryController :ControllerBase
     }
 
     [HttpPut("RemoveCategory/{id}")]
+    [Produces("application/json")]
     public JsonResult RemoveCategory(int id)
     {
         try
@@ -100,6 +105,7 @@ public class CategoryController :ControllerBase
     }
     
     [HttpDelete("DeleteCategory/{id}")]
+    [Produces("application/json")]
     public JsonResult DeleteCategory(int id)
     {
         var category = _entities.ProductCategories.Find(id);

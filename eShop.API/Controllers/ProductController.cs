@@ -4,33 +4,34 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eShop.API.Controllers;
 
-[ApiController]
+[Route("[controller]")]
 public class ProductController :ControllerBase
 {
     private eShopEntities _entities = new eShopEntities();
 
-    public ProductController(eShopEntities entities)
-    {
-        entities = _entities;
-    }
+    // public ProductController(eShopEntities entities)
+    // {
+    //     entities = _entities;
+    // }
 
     [HttpGet("Product")]
+    [Produces("application/json")]
     public JsonResult GetProduct()
     {
-        _entities.Products.Count();
         var data = _entities.Products.ToList(); 
         return new JsonResult(data);
     }
     
     [HttpGet("ProductDetail/{id}")]
+    [Produces("application/json")]
     public JsonResult GetProduct(int id)
     {
-        _entities.Products.Count();
         var product = _entities.Products.Where(p => p.ProductId == id).FirstOrDefault();
         return new JsonResult(product);
     }
 
     [HttpPost("AddProduct")]
+    [Produces("application/json")]
     public ActionResult AddProduct(ProductModel model)
     {
         var category = _entities.ProductCategories
@@ -70,6 +71,7 @@ public class ProductController :ControllerBase
     }
 
     [HttpPut("UpdateProduct/{id}")]
+    [Produces("application/json")]
     public JsonResult UpdateProduct(int id, ProductModel model)
     {
         var products = _entities.Products.Find(id);
@@ -142,6 +144,7 @@ public class ProductController :ControllerBase
     }
 
     [HttpDelete("DeleteProduct/{id}")]
+    [Produces("application/json")]
     public JsonResult DeleteProduct(int id)
     {
         var products = _entities.Products.Find(id);
